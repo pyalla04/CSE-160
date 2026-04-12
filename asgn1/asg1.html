@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment 1: Painting</title>
+  </head>
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+
+    <p>
+      Awesomeness feature!: gap filling now added to the brush, so now, shapes are interpolated between mouse positions during dragging for smooth, continuous strokes.
+    </p>
+    <p>
+      Picture: five candles drawn using triangles, the initials 'P' and 'Y' are incorporated into the design; 'P' is shown in the candle holder of the second candle from the left, and 'Y' is shown in the third candle.
+    </p>
+    <p>
+      My original drawing:
+    <br>
+    <img src="cse160asgn1drawing.jpg" width="400" />
+    </p>
+
+    <p>
+      <button onclick="clearCanvas()">Clear Canvas</button>
+      <button onclick="drawPicture()">Draw Picture</button>
+    </p>
+
+    <p>
+      Drawing Mode:
+      <button onclick="setMode('point')">Point</button>
+      <button onclick="setMode('triangle')">Triangle</button>
+      <button onclick="setMode('circle')">Circle</button>
+    </p>
+
+    <p>
+      Red: <input type="range" id="redSlider" min="0" max="255" value="255" /><br>
+      Green: <input type="range" id="greenSlider" min="0" max="255" value="255" /><br>
+      Blue: <input type="range" id="blueSlider" min="0" max="255" value="255" /><br>
+      Size: <input type="range" id="sizeSlider" min="1" max="50" value="10" /><br>
+      Segments: <input type="range" id="segSlider" min="3" max="64" value="12" />
+    </p>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="asg1.js"></script>
+  </body>
+</html>
