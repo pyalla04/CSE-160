@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment 2: Blocky Animal</title>
+  </head>
+  <body onload="main()">
+    <!-- Pooja Yalla -->
+    <!-- pyalla@ucsc.edu -->
+    <!-- Notes to Grader: none -->
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+
+    <p>Pooja Yalla | Assigned Animal: Cow</p>
+    <p id="fps">FPS: --</p>
+    <p>Global Rotation: <input type="range" id="globalRotSlider" min="0" max="360" value="0" /></p>
+    <p>Front Left Upper Leg: <input type="range" id="frontLeftUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Left Lower Leg: <input type="range" id="frontLeftLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Left Hoof: <input type="range" id="frontLeftHoofSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Right Upper Leg: <input type="range" id="frontRightUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Right Lower Leg: <input type="range" id="frontRightLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Left Upper Leg: <input type="range" id="backLeftUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Left Lower Leg: <input type="range" id="backLeftLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Right Upper Leg: <input type="range" id="backRightUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Right Lower Leg: <input type="range" id="backRightLowerSlider" min="-90" max="90" value="0" /></p>
+    <p><button id="animBtn">Start Animation</button></p>
+
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cylinder.js"></script>
+    <script src="asgn2.js"></script>
+  </body>
+</html>
