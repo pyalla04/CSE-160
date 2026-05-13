@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CSE 160 | Assignment 3: Blocky World | By: Pooja Yalla</title>
+    <style>
+      body { margin: 0; background: #000; overflow: hidden; }
+      canvas { display: block; }
+      #fps { color: white; position: absolute; top: 10px; left: 10px; font-family: monospace; }
+      #name {
+        color: white;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: monospace;
+        font-size: 13px;
+        text-shadow: 1px 1px 2px black;
+        white-space: nowrap;
+      }
+      #story-box {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(0,0,0,0.5);
+        padding: 10px 20px;
+        border-radius: 8px;
+        pointer-events: all;
+      }
+      #story {
+        color: white;
+        font-family: monospace;
+        font-size: 16px;
+        text-shadow: 1px 1px 3px black;
+        max-width: 650px;
+        text-align: center;
+      }
+      #next-btn {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        border: 1px solid white;
+        font-family: monospace;
+        font-size: 14px;
+        padding: 5px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      #next-btn:hover { background: rgba(255,255,255,0.35); }
+      #controls {
+        color: white;
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        font-family: monospace;
+        font-size: 12px;
+        text-align: right;
+        text-shadow: 1px 1px 2px black;
+      }
+    </style>
+  </head>
+  <body onload="main()">
+    <!-- Pooja Yalla -->
+    <!-- pyalla@ucsc.edu -->
+    <!-- Notes to Grader: Cool Things to Pay Attention To!:
+     - Added my cow from the Blocky Animal assignment, sits on top of the mountain in the center of the world.
+     - Created a water ring surrounding the entirety of the mountain base.
+     - Clouds of different shapes float in the sky.
+     - Bushes of varying sizes and colorful flowers are scattered around the world.
+     - Three textures used: dirt walls, grass tops, and water.
+     - Left click to add a block in front of you, right click to remove.
+     - Hold left mouse button and drag to rotate camera view.
+     - Use the Next button at the bottom to follow the story! -->
+    <canvas id="webgl" width="1280" height="720">
+      Please use a browser that supports "canvas"
+    </canvas>
+    <div id="fps">FPS: --</div>
+    <div id="name">CSE 160 | Assignment 3: Blocky World | By: Pooja Yalla</div>
+    <div id="story-box">
+      <div id="story">Welcome to the world of the Blocky Cow!</div>
+      <button id="next-btn" onclick="nextStory()">Next ›</button>
+    </div>
+    <div id="controls">WASD: move | Q/E: rotate | drag: look | click: add | right-click: remove</div>
+
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Cube.js"></script>
+    <script src="camera.js"></script>
+    <script src="asgn3.js"></script>
+  </body>
+</html>
