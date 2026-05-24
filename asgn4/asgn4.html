@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment 4: Lighting</title>
+  </head>
+  <body onload="main()">
+    <!-- Pooja Yalla -->
+    <!-- pyalla@ucsc.edu -->
+    <!-- Notes to Grader: none -->
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+
+    <p>Pooja Yalla | CSE 160 | Assignment 4</p>
+    <p>Notes: I used my blocky cow from Assignment 2 with full Phong shading<br>
+    (ambient, diffuse, and specular), a point light that orbits the scene and can be<br>
+    controlled with a slider, a spotlight, and a bunny OBJ model from the course files<br>
+    to demonstrate lighting on a complex mesh with smooth normals.</p>
+    <p id="fps">FPS: --</p>
+
+    <!-- camera controls -->
+    <p>Global Rotation: <input type="range" id="globalRotSlider" min="0" max="360" value="0" /></p>
+
+    <!-- animation button -->
+    <p><button id="animBtn">Start Animation</button></p>
+
+    <!-- lighting controls -->
+    <p><button id="lightBtn">Turn Light Off</button></p>
+    <p><button id="normalBtn">Show Normals</button></p>
+    <p><button id="spotLightBtn">Turn Spot Light On</button></p>
+    <p>Light Position: <input type="range" id="lightSlider" min="0" max="6.28" step="0.01" value="0" /></p>
+    <p>Light Color: <input type="range" id="lightColorSlider" min="0" max="1" step="0.01" value="0" /></p>
+
+    <!-- leg joint sliders -->
+    <p>Front Left Upper Leg: <input type="range" id="frontLeftUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Left Lower Leg: <input type="range" id="frontLeftLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Left Hoof: <input type="range" id="frontLeftHoofSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Right Upper Leg: <input type="range" id="frontRightUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Front Right Lower Leg: <input type="range" id="frontRightLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Left Upper Leg: <input type="range" id="backLeftUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Left Lower Leg: <input type="range" id="backLeftLowerSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Right Upper Leg: <input type="range" id="backRightUpperSlider" min="-90" max="90" value="0" /></p>
+    <p>Back Right Lower Leg: <input type="range" id="backRightLowerSlider" min="-90" max="90" value="0" /></p>
+
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cylinder.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="Model.js"></script>
+    <script src="asgn4.js"></script>
+  </body>
+</html>
