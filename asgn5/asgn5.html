@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  CSE 160 | Pooja Yalla | Assignment 5
+
+  This scene was loosely inspired by the balloon house sequence
+  from the movie 'Up', where the house is lifted
+  into the sky by thousands of colorful balloons! The house floats above a forest of
+  trees and wooden crates with flower pots on top.
+
+  Wow Features:
+  1. Balloon Popping - click any balloon to pop it
+  2. Helicopter Mode - double-click the house to trigger a helicopter animation
+  3. Add Balloons - click the "+ Add Balloons" button to spawn 50 more balloons
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSE 160 | Assignment 5 | Pooja Yalla</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: #000; overflow: hidden; font-family: sans-serif; }
+
+      #header {
+        position: fixed; top: 16px; right: 16px;
+        padding: 8px 16px; background: rgba(0,0,0,0.55);
+        color: white; border-radius: 6px; font-size: 14px; z-index: 999;
+      }
+
+      #reset-btn {
+        position: fixed; top: 16px; left: 16px;
+        padding: 8px 16px; background: rgba(0,0,0,0.5);
+        color: white; border: none; border-radius: 6px;
+        cursor: pointer; font-size: 14px; z-index: 999;
+      }
+
+      #add-balloons-btn {
+        position: fixed; top: 56px; left: 16px;
+        padding: 8px 16px; background: rgba(220,50,50,0.7);
+        color: white; border: none; border-radius: 6px;
+        cursor: pointer; font-size: 14px; z-index: 999;
+      }
+
+      #instructions {
+        position: fixed; bottom: 16px; left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px; background: rgba(0,0,0,0.55);
+        color: white; border-radius: 8px;
+        font-size: 13px; z-index: 999;
+        text-align: center; line-height: 1.6;
+        white-space: nowrap;
+      }
+
+      #caption-container {
+        position: fixed; bottom: 70px; left: 50%;
+        transform: translateX(-50%);
+        display: flex; align-items: center; gap: 12px;
+        z-index: 999;
+        transition: opacity 0.4s ease;
+      }
+
+      #caption-bar {
+        padding: 10px 20px;
+        background: rgba(0,0,0,0.72);
+        color: white; border-radius: 8px;
+        font-size: 14px;
+        text-align: center;
+        max-width: 550px;
+        line-height: 1.6;
+      }
+
+      #next-btn {
+        padding: 8px 16px;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 6px; cursor: pointer;
+        font-size: 13px; white-space: nowrap;
+      }
+      #next-btn:hover { background: rgba(255,255,255,0.28); }
+
+      #replay-btn {
+        display: none;
+        position: fixed; bottom: 70px; left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 20px; background: rgba(255,255,255,0.15);
+        color: white; border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 6px; cursor: pointer;
+        font-size: 13px; z-index: 999;
+      }
+      #replay-btn:hover { background: rgba(255,255,255,0.25); }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+      }
+    }
+    </script>
+  </head>
+  <body>
+
+    <div id="header">CSE 160 &nbsp;|&nbsp; Pooja Yalla &nbsp;|&nbsp; Assignment 5</div>
+
+    <button id="reset-btn">Reset View</button>
+    <button id="add-balloons-btn">+ Add Balloons</button>
+
+    <div id="instructions">
+      Inspired by Pixar's <i>Up</i> (2009) &nbsp;|&nbsp;
+      WASD to fly &nbsp;|&nbsp; E / Q up / down &nbsp;|&nbsp;
+      Click a balloon to pop it &nbsp;|&nbsp;
+      Double-click the house for helicopter mode
+    </div>
+
+    <div id="caption-container">
+      <div id="caption-bar"></div>
+      <button id="next-btn">Next</button>
+    </div>
+    <button id="replay-btn">Replay Info</button>
+
+    <script type="module" src="asgn5.js"></script>
+
+    <script>
+      const captions = [
+        "This scene was loosely inspired by the balloon house sequence from the movie 'Up' where the house is lifted into the sky by thousands of colorful balloons!",
+        "The house floats above a forest of trees and wooden crates with flower pots on top.",
+        "These are my 3 wow features!",
+        "Wow Feature 1: Click any balloon to pop it.",
+        "Wow Feature 2: Double-click the house to trigger a helicopter sort of animation.",
+        "Wow Feature 3: Click the + Add Balloons button to spawn 50 more balloons.",
+      ];
+
+      const container = document.getElementById('caption-container');
+      const captionBar = document.getElementById('caption-bar');
+      const nextBtn = document.getElementById('next-btn');
+      const replayBtn = document.getElementById('replay-btn');
+      let currentIndex = 0;
+
+      function showCaption(index) {
+        if (index >= captions.length) {
+          container.style.display = 'none';
+          replayBtn.style.display = 'block';
+          return;
+        }
+
+        captionBar.innerText = captions[index];
+        nextBtn.innerText = index === captions.length - 1 ? 'Finish' : 'Next';
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex++;
+        showCaption(currentIndex);
+      });
+
+      replayBtn.addEventListener('click', () => {
+        replayBtn.style.display = 'none';
+        container.style.display = 'flex';
+        currentIndex = 0;
+        showCaption(0);
+      });
+
+      showCaption(0);
+    </script>
+  </body>
+</html>
